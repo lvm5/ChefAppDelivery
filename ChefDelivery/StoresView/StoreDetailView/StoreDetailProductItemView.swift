@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StoreDetailItemView: View {
+struct StoreDetailProductItemView: View {
     
     let product: ProductType
     @Environment(\.colorScheme) var colorScheme
@@ -19,11 +19,11 @@ struct StoreDetailItemView: View {
                     .bold()
                 
                 Text(product.description)
-                //.foregroundColor(.black.opacity(0.5))
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.leading)
                 
                 Text(product.formattedPrice)
+                    .bold()
             }
             
             Spacer()
@@ -33,7 +33,7 @@ struct StoreDetailItemView: View {
                 .scaledToFit()
                 .cornerRadius(12.0)
                 .frame(width: 120, height: 120)
-            //.shadow(color: (colorScheme).white.opacity(0.3),radius: 20, x: 6, y: 8)
+                .shadow(color: colorScheme == .light ? Color(.black).opacity(0.5) : Color(.gray).opacity(0.5), radius: 10, x: 6, y: 8)
         }
         .padding()
         .foregroundColor(colorScheme == .light ? .black : .white)
@@ -41,5 +41,5 @@ struct StoreDetailItemView: View {
 }
 
 #Preview {
-    StoreDetailItemView(product: storesMock[0].products[0])
+    StoreDetailProductItemView(product: storesMock[0].products[0])
 }

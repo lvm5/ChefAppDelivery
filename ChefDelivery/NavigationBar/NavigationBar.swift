@@ -8,11 +8,33 @@
 import SwiftUI
 
 struct NavigationBar: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Spacer()
+            Button("R. Arco Verde, 973") {
+                
+            }
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .foregroundColor(colorScheme == .light ? .black : .white)
+            
+            Spacer()
+            
+            Button(action: {}) {
+                Image(systemName: "bell.badge")
+            }
+            .font(.title3)
+            .foregroundColor(.red)
+        }
     }
 }
 
 #Preview {
     NavigationBar()
+        .previewLayout(.sizeThatFits)
+        .padding()
 }

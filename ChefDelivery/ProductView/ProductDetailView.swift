@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct ProductDetailView: View {
+    
+    let product: ProductType
+    @Environment(\.colorScheme) var colorScheme
+    @State private var productQuantity = 1
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ProductHeaderDetailView(product: product)
+            Spacer()
+            ProductQuantityDetailView(productQuantity: $productQuantity)
+            Spacer()
+            ProductDetailAddToCart()
+        }
     }
 }
 
-#Preview {
-    ProductDetailView()
-}
+    #Preview {
+        ProductDetailView(product: storesMock[0].products[0])
+    }
